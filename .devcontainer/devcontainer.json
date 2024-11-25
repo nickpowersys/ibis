@@ -2,6 +2,7 @@
   "build": { "dockerfile": "Dockerfile",
               "context": ".." },
   "containerUser": "vscode",
+  "remoteUser": "vscode",
   "customizations": {
     "codespaces": {
       "openFiles": ["docs/tutorials/getting_started.qmd"]
