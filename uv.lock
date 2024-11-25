@@ -1996,6 +1996,13 @@ visualization = [
 ]
 
 [package.dev-dependencies]
+clickhouse-tests = [
+    { name = "clickhouse-connect" },
+    { name = "numpy" },
+    { name = "pandas" },
+    { name = "pyarrow" },
+    { name = "pyarrow-hotfix" },
+]
 dev = [
     { name = "codespell", extra = ["hard-encoding-detection", "toml"] },
     { name = "dunamai" },
@@ -2189,6 +2196,13 @@ requires-dist = [
 ]
 
 [package.metadata.requires-dev]
+clickhouse-tests = [
+    { name = "clickhouse-connect", specifier = ">=0.8.6" },
+    { name = "numpy", specifier = ">=2.1.3" },
+    { name = "pandas", specifier = ">=2.2.3" },
+    { name = "pyarrow", specifier = ">=18.0.0" },
+    { name = "pyarrow-hotfix", specifier = ">=0.6" },
+]
 dev = [
     { name = "codespell", extras = ["hard-encoding-detection", "toml"], specifier = ">=2.2.6,<3" },
     { name = "dunamai", specifier = ">=1.22.0" },

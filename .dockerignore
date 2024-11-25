@@ -3,3 +3,6 @@ ci/udf/CMakeFiles/
 ci/udf/Makefile
 **/*.pyc
 **/__pycache__
+# Exclude the project virtual environment from image builds
+.venv
+
