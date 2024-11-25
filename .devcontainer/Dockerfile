@@ -41,8 +41,8 @@ ENV UV_CACHE_DIR=/app/.cache/uv
 RUN mkdir -p $UV_CACHE_DIR && chown -R $USERNAME $UV_CACHE_DIR && chmod -R 760 $UV_CACHE_DIR
 COPY . .
 
-#RUN --mount=type=cache,target=$UV_CACHE_DIR \
-#    ["uv", "pip", "install", "-e", ".[duckdb,clickhouse,examples,geospatial]"]
+RUN --mount=type=cache,target=$UV_CACHE_DIR \
+   ["uv", "pip", "install", "-e", ".[duckdb,clickhouse,examples,geospatial]"]
 
 # Place executables in the environment at the front of the path
 ENV PATH="/app/.venv/bin:$PATH"
