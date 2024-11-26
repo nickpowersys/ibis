@@ -3,6 +3,7 @@
               "context": ".." },
   "containerUser": "vscode",
   "remoteUser": "vscode",
+  "postCreateCommand": ".devcontainer/postCreate.sh",
   "customizations": {
     "codespaces": {
       "openFiles": ["docs/tutorials/getting_started.qmd"]
