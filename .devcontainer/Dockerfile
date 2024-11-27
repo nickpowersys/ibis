@@ -11,7 +11,7 @@ RUN python3 -m pip install pipx --no-cache-dir
 RUN python3 -m pipx ensurepath
 RUN pipx install rust-just
 
-WORKDIR /app
+RUN uv venv
 
 # Enable bytecode compilation
 ENV UV_COMPILE_BYTECODE=1
@@ -32,12 +32,12 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 
 # Then, add the rest of the project source code and install it
 # Installing separately from its dependencies allows optimal layer caching
-COPY . /app
+COPY . .
 
 RUN --mount=type=cache,target=/root/.cache/uv \
    uv sync --frozen --no-dev
 
-ENV UV_CACHE_DIR=/app/.cache/uv
+ENV UV_CACHE_DIR=.cache/uv
 RUN mkdir -p $UV_CACHE_DIR && chown -R $USERNAME $UV_CACHE_DIR && chmod -R 760 $UV_CACHE_DIR
 COPY . .
 
@@ -45,8 +45,8 @@ RUN --mount=type=cache,target=$UV_CACHE_DIR \
    ["uv", "pip", "install", "-e", ".[duckdb,clickhouse,examples,geospatial]"]
 
 # Place executables in the environment at the front of the path
-ENV PATH="/app/.venv/bin:$PATH"
+ENV PATH=".venv/bin:$PATH"
 
-SHELL ["/bin/bash", "-c", "source /app/.venv/bin/activate"]
+SHELL ["/bin/bash", "-c", "source .venv/bin/activate"]
 
 USER $USERNAME
